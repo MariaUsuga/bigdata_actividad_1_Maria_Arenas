@@ -9,12 +9,12 @@ Se ha configurado un flujo de trabajo automatizado mediante GitHub Actions en el
 
 Verificación del repositorio: Se clonan los archivos y se validan las rutas.
 
-Instalación de dependencias: Se instalan las librerías definidas en requirements.txt.
-
 Ejecución del script: Se ejecuta el script principal para verificar el correcto funcionamiento.
 
 Generación de evidencias: Verifica que los archivos JSON y TXT hayan sido creados en la carpeta correspondiente.
 
 # La ruta que se creo fue:
 
-Para acceder al sistema de archivos del repositorio y verificarlos en: src/ibgd/static/db/.
+Para acceder al sistema de archivos del repositorio y verificarlos: src/ibgd/static/ingestion.py
+
+auditoria: contiene el archivo ingestion_audit.txt que hace su respectivo control e informe de numero de registros y columnas, en la carpeta db esta la base de datos.
