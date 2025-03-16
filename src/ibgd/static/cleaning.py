@@ -32,13 +32,28 @@ class Ingestion:
             ruta_modificada = "datos_db_modificado.csv"
             df_sin_duplicados.to_csv(ruta_modificada, index=False)
 
+            # Guardar una muestra representativa en un archivo CSV
+            muestra_representativa = df_sin_duplicados.sample(n=min(10, len(df_sin_duplicados)))  # Muestra de 10 registros o menos
+            ruta_muestra = "muestra_registros_limpios.csv"
+            muestra_representativa.to_csv(ruta_muestra, index=False)
+
+            # Generar el archivo de auditoría
+            ruta_auditoria = "cleaning_report.txt"
+            with open(ruta_auditoria, "w") as archivo_auditoria:
+                archivo_auditoria.write("Informe de Auditoría de Limpieza de Datos\n\n")
+                archivo_auditoria.write(f"Número de registros antes de la limpieza: {len(df)}\n")
+                archivo_auditoria.write(f"Número de registros después de la limpieza: {len(df_sin_duplicados)}\n\n")
+                archivo_auditoria.write("Operaciones realizadas:\n")
+                archivo_auditoria.write("- Eliminación de duplicados\n")
+                archivo_auditoria.write("- Reemplazo de valores nulos en la columna 'pais' con 'Colombia'\n")
+
             # Guardar los datos en un archivo JSON para la auditoría
             datos_json = df_sin_duplicados.to_dict(orient="records")
             ruta_json = "{}db/ingestion.json".format(self.ruta_static)
             with open(ruta_json, "w") as archivo_json:
                 json.dump(datos_json, archivo_json)
 
-            print("Datos cargados correctamente en CSV (original y modificado) y JSON.")
+            print("Datos cargados correctamente en CSV (original y modificado), muestra representativa y archivo de auditoría.")
         except Exception as error:
             print("Error al cargar datos:", error)
 
