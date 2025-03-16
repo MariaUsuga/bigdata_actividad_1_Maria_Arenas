@@ -42,7 +42,7 @@ NOTA: Los commit se ejecutan de manera correcta en el archivo proyecto_integrado
 Ruta completa: .github/workflows dentro archivo proyecto_integrador1.yml
 
 
-Claro, aquí tienes un README que documenta la trazabilidad del proceso, con instrucciones para clonar, instalar dependencias y ejecutar el script de limpieza, además de describir el workflow automatizado mediante GitHub Actions:
+PASO A PASO realizado en la actividad 2 y explicacion para clonar el repositorio:
 
 Proyecto de Limpieza de Datos y Auditoría
 Este repositorio contiene un script de Python (cleaning.py) que realiza la limpieza de datos obtenidos de una API de amiibo de Nintendo, así como un script de ingestión de datos desde una API de criptomonedas (ingestion.py). Se documenta la trazabilidad del proceso y se automatiza la ejecución del script de limpieza mediante GitHub Actions.
@@ -63,12 +63,14 @@ tu_repositorio/
 Requisitos
 Python 3.6 o superior
 Bibliotecas de Python: pandas, requests
+
+
 Instrucciones de Instalación
 Clonar el repositorio:
 
 Bash
 
-git clone https://github.com/tu_usuario/tu_repositorio.git
+git clone https://https://github.com/MariaUsuga/bigdata_actividad_1_Maria_Arenas.git
 cd tu_repositorio
 
 Ejecución del Script de Limpieza
