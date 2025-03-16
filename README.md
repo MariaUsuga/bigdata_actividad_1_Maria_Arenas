@@ -18,3 +18,20 @@ Generación de evidencias: Verifica que los archivos JSON y TXT hayan sido cread
 Para acceder al sistema de archivos del repositorio y verificarlos: src/ibgd/static/ingestion.py
 
 auditoria: contiene el archivo ingestion_audit.txt que hace su respectivo control e informe de numero de registros y columnas, en la carpeta db esta la base de datos.
+
+ACTIVIDAD 2
+
+Limpieza de Datos y Auditoría
+
+Este proyecto realiza la ingesta de datos desde una API, específicamente información de amiibos de Nintendo. Durante el proceso, se aplica una limpieza de datos para asegurar la calidad de la información. Esto incluye el reemplazo de valores nulos en la columna "pais" con el valor "Colombia".
+
+Para mantener un registro transparente de las modificaciones, se realiza una auditoría que compara la versión original de los datos (con valores nulos) con la versión modificada (con "Colombia"). Esta auditoría se lleva a cabo mediante la creación de dos archivos CSV: datos_db_original.csv y datos_db_modificado.csv.
+
+El script ingestion.py es el encargado de realizar tanto la ingesta como la limpieza y la auditoría. Este script:
+
+Obtiene los datos de la API y los carga en un DataFrame de pandas.
+Guarda la versión original de los datos en datos_db_original.csv.
+Reemplaza los valores nulos en la columna "pais" con "Colombia".
+Guarda la versión modificada de los datos en datos_db_modificado.csv.
+Realiza una auditoría comparando ambos archivos CSV y genera un archivo JSON con los resultados.
+Este proceso asegura que los datos sean precisos y que se mantenga un registro de las transformaciones realizadas.
