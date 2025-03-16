@@ -27,6 +27,8 @@ Este proyecto realiza la ingesta de datos desde una API, específicamente inform
 
 Para mantener un registro transparente de las modificaciones, se realiza una auditoría que compara la versión original de los datos (con valores nulos) con la versión modificada (con "Colombia"). Esta auditoría se lleva a cabo mediante la creación de dos archivos CSV: datos_db_original.csv y datos_db_modificado.csv.
 
+Se hace limpieza de datos, se reemplazan los valores null, se llenan por pais Colombia, tambien se eliminan los valores duplicados del dataframe.
+
 El script ingestion.py es el encargado de realizar tanto la ingesta como la limpieza y la auditoría. Este script:
 
 Obtiene los datos de la API y los carga en un DataFrame de pandas.
@@ -35,3 +37,6 @@ Reemplaza los valores nulos en la columna "pais" con "Colombia".
 Guarda la versión modificada de los datos en datos_db.csv.
 Realiza una auditoría comparando ambos archivos CSV y genera un archivo JSON con los resultados.
 Este proceso asegura que los datos sean precisos y que se mantenga un registro de las transformaciones realizadas.
+
+NOTA: Los commit se ejecutan de manera correcta en el archivo proyecto_integrador1.yml
+Ruta completa: .github/workflows dentro archivo proyecto_integrador1.yml
