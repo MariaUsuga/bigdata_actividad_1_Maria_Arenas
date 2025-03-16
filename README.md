@@ -19,7 +19,7 @@ Para acceder al sistema de archivos del repositorio y verificarlos: src/ibgd/sta
 
 auditoria: contiene el archivo ingestion_audit.txt que hace su respectivo control e informe de numero de registros y columnas, en la carpeta db esta la base de datos.
 
-ACTIVIDAD 2
+# ACTIVIDAD 2
 
 Limpieza de Datos y Auditoría
 
@@ -32,6 +32,6 @@ El script ingestion.py es el encargado de realizar tanto la ingesta como la limp
 Obtiene los datos de la API y los carga en un DataFrame de pandas.
 Guarda la versión original de los datos en datos_db_original.csv.
 Reemplaza los valores nulos en la columna "pais" con "Colombia".
-Guarda la versión modificada de los datos en datos_db_modificado.csv.
+Guarda la versión modificada de los datos en datos_db.csv.
 Realiza una auditoría comparando ambos archivos CSV y genera un archivo JSON con los resultados.
 Este proceso asegura que los datos sean precisos y que se mantenga un registro de las transformaciones realizadas.
