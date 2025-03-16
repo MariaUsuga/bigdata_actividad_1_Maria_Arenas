@@ -22,15 +22,18 @@ class Ingestion:
             ruta_original = "datos_db_original.csv"
             df.to_csv(ruta_original, index=False)
 
+            # Eliminar duplicados del DataFrame
+            df_sin_duplicados = df.drop_duplicates()
+
             # Reemplazar valores nulos en la columna "pais" con "Colombia"
-            df["pais"] = df["pais"].fillna("Colombia")
+            df_sin_duplicados["pais"] = df_sin_duplicados["pais"].fillna("Colombia")
 
             # Guardar la versión modificada en un archivo CSV
             ruta_modificada = "datos_db_modificado.csv"
-            df.to_csv(ruta_modificada, index=False)
+            df_sin_duplicados.to_csv(ruta_modificada, index=False)
 
             # Guardar los datos en un archivo JSON para la auditoría
-            datos_json = df.to_dict(orient="records")
+            datos_json = df_sin_duplicados.to_dict(orient="records")
             ruta_json = "{}db/ingestion.json".format(self.ruta_static)
             with open(ruta_json, "w") as archivo_json:
                 json.dump(datos_json, archivo_json)
@@ -41,7 +44,7 @@ class Ingestion:
 
     def validar_autoria(self, datos, nombre_archivo="ingestion"):
         """
-        Valida la cantidad de registros y columnas de la variable 'datos' 
+        Valida la cantidad de registros y columnas de la variable 'datos'
         y de los archivos CSV (original y modificado).
         Se asume que 'datos' es un DataFrame.
         """
