@@ -122,6 +122,52 @@ ingestion_audit.txt: Contiene un informe de auditoría con los datos de entrada,
 
 Se crea el archivo transformation.py, donde se crea los Dataframe, se hace un Join para unir los dos dataframe, con lo pide la actividad.
 
-Tambien se crea un archivo de auditoria transformation.txt y 
-Dataset enriquecido.csv
+Tambien se crea un archivo de auditoria transformation.txt y Dataset enriquecido.csv
+
+A continuacion se hace la Descripcion y trazabilidad de la entrega 3 y como clonar el proyecto.
+
+# Proyecto de Enriquecimiento de Datos
+
+Este repositorio contiene un flujo de trabajo para la ingesta, limpieza, transformación y enriquecimiento de datos, diseñado para automatizar procesos mediante GitHub Actions.
+
+
+# Estructura del Proyecto
+
+Ingesta (ingestion.py): Obtención de datos desde una API, almacenamiento en formatos JSON y TXT, y generación de auditorías.
+
+Limpieza (cleaning.py): Eliminación de duplicados, manejo de valores nulos, y exportación de datos limpios.
+
+Transformación (Transformation.py): Unión de datasets (API y local), integración de datos y generación de un dataset enriquecido.
+
+Automatización: Implementación de un workflow automatizado utilizando GitHub Actions.
+
+
+# Pasos para Clonar el Repositorio:
+
+1. Clona el repositorio en tu máquina local:
+git clone https://github.com/MariaUsuga/bigdata_actividad_1_Maria_Arenas.git
+cd tu_repositorio
+2. Crea un entorno virtual e instálalo:
+python -m venv venv
+source venv/bin/activate  # En Windows: .\venv\Scripts\activate
+3. Instala las dependencias del proyecto:
+pip install -r requirements.txt
+
+
+# Automatización mediante GitHub Actions
+
+El flujo de trabajo está configurado en el archivo proyecto_integrador1.yml ubicado en github/workflows/. A continuación se detalla su funcionamiento:
+Eventos que activan el workflow:
+Cada vez que se realiza un push a la rama main.
+Tareas ejecutadas:
+Configuración del entorno de ejecución (Python 3.9).
+Instalación de dependencias.
+Ejecución de los scripts de ingesta, limpieza y transformación.
+Commit y push automático de los resultados generados.
+
+# Archivos Generados
+
+Dataset enriquecido: Archivo CSV con datos finales (muestra_dataset_enriquecido.csv).
+Auditorías: Informes en formato txt. que documentan cada paso del proceso.
+Datos limpios: Archivos CSV intermedios, como datos_db_modificado.csv
 
