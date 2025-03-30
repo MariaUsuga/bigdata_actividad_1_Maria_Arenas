@@ -1,6 +1,7 @@
 import requests
 import json
 from datetime import datetime
+import pandas as pd  
 
 class Ingestion:
     def __init__(self):
