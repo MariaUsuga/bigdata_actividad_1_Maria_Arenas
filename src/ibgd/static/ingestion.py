@@ -64,7 +64,7 @@ url = "https://www.mercadobitcoin.net/api"
 
 
 # Obtener datos y convertir a DataFrame
-datos_api = ingestion.obtener_datos_api(url=url, params=params)
+datos_api = ingestion.obtener_datos_api(url=url, params=parametros)
 df_api = pd.DataFrame(datos_api)
 
 
