@@ -1,0 +1,6 @@
+Informe de Auditoría de Limpieza
+
+Número de registros iniciales: 0
+Operaciones realizadas:
+- Eliminación de duplicados
+- Manejo de valores nulos en la columna 'pais'
