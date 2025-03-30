@@ -116,3 +116,12 @@ El script ingestion.py genera los siguientes archivos para documentar la trazabi
 ingestion.json: Contiene los datos de la API de criptomonedas en formato JSON.
 ingestion.txt: Contiene los datos de la API de criptomonedas en formato TXT.
 ingestion_audit.txt: Contiene un informe de auditoría con los datos de entrada, los datos guardados y la cantidad de registros y columnas.
+
+
+# ENTREGA ACTIVIDAD 3
+
+Se crea el archivo transformation.py, donde se crea los Dataframe, se hace un Join para unir los dos dataframe, con lo pide la actividad.
+
+Tambien se crea un archivo de auditoria transformation.txt y 
+Dataset enriquecido.csv
+

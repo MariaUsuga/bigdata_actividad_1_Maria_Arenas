@@ -62,6 +62,12 @@ ingestion = Ingestion()
 parametros = {"coin": "BTC", "method": "ticker"}
 url = "https://www.mercadobitcoin.net/api"
 
+
+# Obtener datos y convertir a DataFrame
+datos_api = ingestion.obtener_datos_api(url=url, params=params)
+df_api = pd.DataFrame(datos_api)
+
+
 datos = ingestion.obtener_datos_api(url=url, params=parametros)
 
 if len(datos) > 0:

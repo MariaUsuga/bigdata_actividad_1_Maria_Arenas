@@ -108,3 +108,14 @@ if not df_datos.empty:
     ingestion.validar_autoria(datos=df_datos)  # Pasar el DataFrame a la auditoría
 else:
     print("No se obtuvieron datos de la API.")
+
+
+# Eliminar duplicados y manejar valores nulos
+df_api = df_api.drop_duplicates()
+if "pais" not in df_api.columns:
+    df_api["pais"] = None
+df_api["pais"] = df_api["pais"].fillna("Colombia")
+
+# Guardar datos limpios
+df_api.to_csv("datos_api_limpio.csv", index=False)
+print("Datos limpios guardados en 'datos_api_limpio.csv'.")    

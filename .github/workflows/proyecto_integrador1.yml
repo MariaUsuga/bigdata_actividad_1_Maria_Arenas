@@ -26,13 +26,17 @@ jobs:
         run: pip install --upgrade pip
       - name: paso4 - instalar dependencias
         run: pip install -e .
-      - name: paso5 - Ejecutar script
+      - name: paso5 - Ejecutar script ACTIVIDAD1
         run: python src/ibgd/static/ingestion.py
+      - name: paso6 - Ejecutar script ACTIVIDAD2
+        run: python src/ibgd/static/cleaning.py
+      - name: paso7 - Ejecutar script ACTIVIDAD3
+        run: python src/ibgd/static/transformation.py    
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Entrega de actividad 1
+          commit_message: Entrega de actividad 1,2 y 3
           commit_user_name: Maria Arenas [GitHub Actions]
           commit_user_email: maria.arenas@est.iudigital.edu.co
           commit_author: Maria Arenas <maria.arenas@est.iudigital.edu.co>
