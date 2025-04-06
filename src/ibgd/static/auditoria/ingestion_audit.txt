@@ -328,3 +328,25 @@ Cantidad de registros: 1
 Cantidad de columnas: 9
 
 
+Fecha y hora: 2025-04-06 06:27:00.189311
+Datos de entrada:
+{
+    "ticker": {
+        "high": "492000.00000000",
+        "low": "484633.00000000",
+        "vol": "13.22867012",
+        "last": "490155.00000000",
+        "buy": "489788.00000000",
+        "sell": "490155.00000000",
+        "open": "491213.00000000",
+        "date": 1743920803,
+        "pair": "BRLBTC"
+    }
+}
+Datos guardados en archivo txt:
+ticker: {'high': '492000.00000000', 'low': '484633.00000000', 'vol': '13.22867012', 'last': '490155.00000000', 'buy': '489788.00000000', 'sell': '490155.00000000', 'open': '491213.00000000', 'date': 1743920803, 'pair': 'BRLBTC'}
+
+Cantidad de registros: 1
+Cantidad de columnas: 9
+
+
