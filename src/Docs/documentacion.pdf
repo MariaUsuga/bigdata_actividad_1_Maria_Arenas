@@ -1,0 +1,118 @@
+Evidencia de Aprendizaje 4
+
+Documentación de la Arquitectura y Modelo de Datos
+
+
+
+
+Maria Johana Arenas Usuga
+Docente: Andrés Felipe Callejas
+
+Curso: Infraestructura y arquitectura para Big Data PREICA2402B010112
+
+
+
+
+Universidad Digital de Antioquia
+Ingeniería de Software y Datos
+Abril de 2025
+ 
+Introducción
+
+Objetivo del Proyecto
+El proyecto tiene como objetivo implementar un sistema de procesamiento de datos en tres fases: ingesta, preprocesamiento y enriquecimiento. Utilizando tecnologías como Python, SQLite, y GitHub Actions, se busca automatizar la ingesta, limpieza y enriquecimiento de datos provenientes de APIs externas. Este sistema garantiza la trazabilidad y reproducibilidad de las ejecuciones, lo que lo hace adecuado para su implementación en entornos simulados de nube.
+El objetivo principal de este proyecto es crear una solución de procesamiento de datos que integre la ingesta, limpieza y enriquecimiento de datos mediante un flujo automatizado. Este flujo de trabajo permite la integración y análisis de datos de diferentes fuentes (API de amiibo y API de criptomonedas) y se automatiza utilizando GitHub Actions. El proyecto final genera un modelo de datos enriquecido, lo que facilita la toma de decisiones en base a un análisis eficiente.
+
+Descripción Global de la Arquitectura
+Descripción Global de la Arquitectura: La arquitectura del proyecto consta de tres fases principales:
+•	Ingesta de Datos: Utilizando un script en Python (ingestion.py), se extraen datos desde APIs externas, almacenándolos en formatos JSON y TXT.
+•	Preprocesamiento de Datos: A través de otro script (cleaning.py), los datos se limpian, eliminando duplicados y sustituyendo valores nulos, principalmente en la columna "pais", que se completa con el valor "Colombia". Los datos preprocesados se guardan en archivos CSV y JSON.
+•	Enriquecimiento de Datos: En esta fase, los datos preprocesados se combinan con otros conjuntos de datos, generando un conjunto de datos enriquecido. El script transformation.py realiza esta integración, produciendo archivos como muestra_dataset_enriquecido.csv y transformation.txt para auditoría.
+Cada una de estas fases está automatizada mediante GitHub Actions, que ejecuta los scripts de manera continua cada vez que se hace un push a la rama main, asegurando la trazabilidad y la reproducibilidad del proceso.
+
+Diagramas de Flujo y Diagrama ER del Modelo de Datos
+
+Diagramas de Flujo:El proceso de extracción de datos desde las APIs y su almacenamiento se puede visualizar como sigue:
+1.	Ingesta de Datos: El script ingestion.py conecta con las APIs, extrae los datos en formatos JSON y TXT, y los guarda en el sistema de archivos local.
+2.	Preprocesamiento de Datos: El script cleaning.py limpia los datos descargados, eliminando duplicados y manejando valores nulos. Se generan archivos CSV con los datos procesados.
+3.	Enriquecimiento de Datos: El script transformation.py une los datasets, generando un dataset enriquecido y produciendo un archivo final con la información procesada.
+Proceso de Preprocesamiento y Enriquecimiento:
+Este diagrama muestra cómo los datos pasan desde la API hacia el archivo de auditoría, generando un dataset limpio y enriquecido.
+Diagrama ER del Modelo de Datos:
+A continuación, se describe un modelo de datos sencillo para ilustrar la base de datos final:
+•	Tabla amiibo:
+•	id_amiibo (INT, PK)
+•	nombre (TEXT)
+•	serie (TEXT)
+•	pais (TEXT)
+•	Tabla cryptocurrency:
+•	id_cryptocurrency (INT, PK)
+•	nombre (TEXT)
+•	simbolo (TEXT)
+•	precio (FLOAT)
+
+
+Explicación de Cada Componente y de las Herramientas Utilizadas
+
+Componente 1: Base de Datos SQLite
+Se ha seleccionado SQLite por su facilidad de uso, bajo costo de implementación y su capacidad para manejar bases de datos de tamaño pequeño y mediano. La base de datos almacena datos procesados que pueden ser consultados y analizados sin la necesidad de infraestructura compleja, lo que la hace ideal para proyectos en entornos simulados o de desarrollo.
+Componente 2: Scripts de Procesamiento
+1.	Ingesta de Datos (ingestion.py): Este script se encarga de obtener los datos de las APIs de amiibo y criptomonedas, y almacenarlos en los formatos adecuados para su posterior procesamiento.
+2.	Limpieza de Datos (cleaning.py): Aquí se realiza el procesamiento de los datos, eliminando duplicados y gestionando valores nulos. Además, se genera un archivo de auditoría (cleaning_report.txt) que documenta los cambios realizados.
+3.	Enriquecimiento de Datos (transformation.py): En esta fase, se realiza un JOIN entre los diferentes datasets, enriqueciendo los datos obtenidos, y produciendo un conjunto final de datos que se almacena en un archivo CSV.
+Componente 3: GitHub Actions
+GitHub Actions se ha utilizado para automatizar el flujo de trabajo, garantizando que los scripts se ejecuten automáticamente cada vez que se realice un push a la rama main del repositorio. Esto asegura la trazabilidad y reproducibilidad del proyecto, permitiendo que el proceso se ejecute sin intervención manual.
+
+
+Conclusiones:
+
+El proyecto ha sido diseñado con una arquitectura que favorece la escalabilidad, la automatización y la trazabilidad. Aunque el entorno simulado en la nube se ha construido de manera eficiente, hay margen de mejora en términos de infraestructura para proyectos más grandes.
+•	Automatización y Eficiencia: La integración de GitHub Actions permite la automatización de las fases del proyecto, asegurando que los scripts se ejecuten de manera continua y sin errores humanos.
+•	Calidad de los Datos: La limpieza y enriquecimiento de los datos garantiza que los datos finales sean consistentes y listos para análisis.
+•	Escalabilidad: Aunque SQLite es adecuado para este proyecto, en proyectos más grandes podría considerarse el uso de bases de datos más robustas.
+
+Recomendaciones
+
+A continuación, se presentan varias recomendaciones que podrían mejorar la eficiencia, escalabilidad y mantenimiento del proyecto, así como su preparación para un entorno de producción real.
+
+•	Optimización de Scripts
+Aunque los scripts implementados en este proyecto cumplen su función, es recomendable optimizarlos para manejar grandes volúmenes de datos de manera más eficiente. Algunas sugerencias incluyen:
+
+Uso de funciones y módulos específicos: Sería útil incorporar bibliotecas como Dask o PySpark, que están diseñadas para trabajar con grandes volúmenes de datos que no caben completamente en memoria. Estas herramientas permiten realizar procesamiento distribuido de datos, lo que mejoraría el rendimiento al trabajar con datasets más grandes.
+
+Mejorar la manipulación de datos: Algunas operaciones de limpieza, como la eliminación de duplicados, pueden resultar costosas en términos de tiempo de ejecución. Se recomienda evaluar el uso de técnicas como el paralelismo o procesamiento en lotes para dividir la carga de trabajo en partes más pequeñas y manejables.
+
+Revisión de los algoritmos de auditoría: Considero que sería útil incluir un sistema de auditoría más robusto, que no solo compare los datos antes y después de la limpieza, sino que también registre los cambios a nivel de fila, lo que permitiría un análisis más detallado y transparente.
+
+•	Escalabilidad de la Base de Datos
+Si bien SQLite es una base de datos ligera que se adapta a las necesidades actuales del proyecto, puede no ser la mejor opción en escenarios donde se requiera manejar grandes volúmenes de datos. Algunas recomendaciones para mejorar la escalabilidad de la base de datos son:
+
+Uso de bases de datos en la nube: Sería conveniente migrar a bases de datos más escalables y robustas, como PostgreSQL o MySQL, o incluso utilizar bases de datos gestionadas en la nube (como Google Cloud SQL o Amazon RDS) para asegurar alta disponibilidad, escalabilidad y seguridad.
+
+Normalización de la base de datos: Es importante asegurarse de que el modelo de datos esté debidamente normalizado para evitar redundancia de información. Esto no solo mejora la eficiencia de las consultas, sino que también facilita la gestión de los datos a medida que el sistema crece.
+
+Implementación de índices: La creación de índices en las columnas más frecuentemente consultadas o utilizadas en los joins podría mejorar el rendimiento de las consultas, especialmente cuando el volumen de datos aumente.
+
+•	Monitoreo y Mantenimiento Continuo
+Aunque el flujo de trabajo automatizado mediante GitHub Actions asegura que las tareas se ejecuten de manera eficiente, es fundamental implementar un sistema de monitoreo y mantenimiento continuo para asegurar que el proyecto se ejecute sin interrupciones y para detectar posibles fallos de manera temprana. Algunas acciones recomendadas son:
+
+Notificaciones automáticas: Sería útil configurar alertas a través de herramientas como Slack o mediante notificaciones por correo electrónico para recibir un aviso inmediato si alguno de los scripts falla o si ocurre un error en el flujo de trabajo automatizado de GitHub Actions.
+
+Revisión periódica de los logs: Para detectar posibles problemas en las ejecuciones de los scripts, se recomienda realizar una revisión periódica de los logs generados y de los archivos de auditoría, a fin de identificar patrones de error o posibles mejoras.
+
+Mantenimiento de los workflows: Asegurarse de que los workflows de GitHub Actions estén correctamente configurados y que las dependencias de los scripts estén siempre actualizadas.
+
+•	Mejoras en el Enriquecimiento de Datos
+La fase de enriquecimiento de datos, que actualmente realiza una unión de los datasets obtenidos de las APIs, podría beneficiarse de algunos procesos adicionales para mejorar la calidad y utilidad del dataset final:
+Enriquecimiento con más fuentes de datos: Se recomienda explorar otras fuentes de datos externas, como información geográfica, demográfica o incluso tendencias en redes sociales, que complementen los datos de las APIs de amiibo y criptomonedas. Esto permitiría tener una visión más amplia y completa de la información disponible.
+Análisis de correlaciones: Implementar técnicas de análisis de correlación o de clustering para detectar relaciones más complejas entre las diferentes variables y proporcionar un valor añadido al análisis final.
+Comentarios en el código: Es importante que los scripts estén completamente comentados para facilitar la comprensión por parte de otros desarrolladores. Esto incluye explicar las decisiones tomadas en cada parte del código, especialmente en aquellas áreas que involucran procesamiento de datos o auditoría.
+
+Generación de informes visuales: Se recomienda la creación de gráficos o tablas que resuman las transformaciones realizadas sobre los datos, como el número de registros antes y después de la limpieza. Estos informes visuales ayudarían a hacer los resultados más comprensibles.
+
+•	Sostenibilidad y Mejora Continua
+Para garantizar que el proyecto siga siendo relevante a largo plazo, es necesario implementar estrategias de mejora continua. Algunas acciones recomendadas incluyen:
+Actualización continua de datos: Asegurar que los datos se mantengan actualizados mediante una estrategia de actualización periódica, ya sea de forma automatizada a través de workflows o mediante intervenciones manuales en caso de cambios en las APIs externas.
+Feedback de los usuarios finales: Obtener retroalimentación de los usuarios o equipos que trabajen con los datos generados, para evaluar la utilidad de la información procesada. Esta retroalimentación permitirá realizar ajustes y mejorar la calidad de los datos en futuras iteraciones del proyecto.
+
+

@@ -171,3 +171,67 @@ Dataset enriquecido: Archivo CSV con datos finales (muestra_dataset_enriquecido.
 Auditorías: Informes en formato txt. que documentan cada paso del proceso.
 Datos limpios: Archivos CSV intermedios, como datos_db_modificado.csv
 
+# ENTREGA ACTIVIDAD 4
+
+Descripción General: La Entrega 4 del proyecto se enfoca en la fase de enriquecimiento de datos, donde se integran los datos obtenidos de las API de amiibo de Nintendo y criptomonedas, mejorando la calidad de la información y optimizando su valor para los análisis posteriores. Esta fase se lleva a cabo mediante la creación de un script de transformación que une los conjuntos de datos en un dataset enriquecido. Adicionalmente, se implementa una automatización avanzada mediante GitHub Actions para ejecutar la ingesta, limpieza, transformación y enriquecimiento de los datos de manera continua y eficiente.
+
+Objetivos de la Entrega:Transformación y Enriquecimiento de Datos: Se integran los datos obtenidos de las APIs en un único conjunto, aplicando transformaciones y enriquecimientos adicionales, con el fin de hacer los datos más completos y útiles.
+
+Automatización del Proceso: Se automatizan todas las etapas del flujo de trabajo (ingesta, limpieza, transformación y enriquecimiento) a través de GitHub Actions, asegurando que los procesos se ejecuten de manera continua con cada nueva actualización del repositorio.
+
+Documentación de la Trazabilidad: Se documenta todo el proceso de transformación y enriquecimiento mediante un archivo de auditoría, que asegura la trazabilidad de los cambios realizados a los datos.
+
+Flujo de Trabajo
+El flujo de trabajo implementado en esta entrega incluye los siguientes pasos clave:
+
+Ingesta de Datos: Obtención de los datos desde las APIs de amiibo de Nintendo y criptomonedas mediante los scripts ingestion.py y cleaning.py.
+
+Limpieza de Datos: Se realiza una limpieza de los datos, que incluye la eliminación de duplicados y el reemplazo de valores nulos, como se detalló en las entregas anteriores.
+
+Transformación y Enriquecimiento:
+
+Se crea el script transformation.py, que une los datasets de las APIs y los datos locales en un solo dataset enriquecido.
+
+Se generan los archivos de auditoría correspondientes, como transformation.txt y Dataset_enriquecido.csv.
+
+Automatización con GitHub Actions:
+
+Se configura un workflow en el archivo .github/workflows/proyecto_integrador1.yml, que automatiza la ejecución del proceso completo cada vez que se realice un push a la rama principal (main).
+
+El workflow incluye la ejecución de los scripts de ingesta, limpieza, transformación y la subida de los resultados generados a la rama principal.
+
+Componentes Principales
+Script de Ingesta (ingestion.py): Obtiene los datos desde las APIs de amiibo de Nintendo y criptomonedas, y los guarda en archivos JSON y TXT.
+
+Script de Limpieza (cleaning.py): Realiza la limpieza de los datos, eliminando duplicados y gestionando valores nulos.
+
+Script de Transformación (transformation.py): Realiza la unión de los datasets de amiibo y criptomonedas, generando un dataset enriquecido y un archivo de auditoría.
+
+Automatización con GitHub Actions: Se configura un flujo de trabajo automatizado para ejecutar todos los scripts de procesamiento y almacenar los resultados en el repositorio.
+
+Archivos Generados
+Durante la ejecución del proceso, se generan los siguientes archivos:
+
+Archivos de Datos:
+
+datos_db_original.csv: Contiene los datos originales descargados de las APIs.
+
+datos_db_modificado.csv: Contiene los datos después de la limpieza.
+
+datos_db.csv: Contiene los datos después de la limpieza, con los valores nulos reemplazados por "Colombia" en la columna pais.
+
+muestra_dataset_enriquecido.csv: Contiene el dataset final enriquecido con los datos combinados de las APIs y las transformaciones realizadas.
+
+Archivos de Auditoría:
+
+cleaning_report.txt: Reporte de auditoría generado durante la limpieza de datos, indicando el número de registros antes y después de la limpieza.
+
+ingestion_audit.txt: Reporte de auditoría generado durante la ingesta de datos, con información sobre el número de registros obtenidos y almacenados.
+
+transformation.txt: Reporte de auditoría generado durante la transformación, con información sobre el proceso de unión de los datasets y los registros involucrados.
+
+Otros Archivos Generados:
+
+ingestion.json: Contiene los datos obtenidos de la API de criptomonedas en formato JSON.
+
+ingestion.txt: Contiene los datos de la API de criptomonedas en formato TXT.
